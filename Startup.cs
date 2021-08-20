@@ -26,9 +26,9 @@ namespace DemoApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContextPool<MyDBContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
-
 
         }
 

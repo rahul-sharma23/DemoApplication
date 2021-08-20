@@ -10,7 +10,6 @@ namespace DemoApplication.Models
         public int Id { get; set; }
         public string Address { get; set; }
         public int PartyIdentityId { get; set; }
-        public DateTime CreationDateTime { get; set; }
         public PartyIdentity PartyIdentity { get; set; }
 
     }
