@@ -35,12 +35,10 @@ namespace DemoApplication.DBContexts
             modelBuilder.Entity<PartyIdentity>().Property(pi => pi.Id).HasColumnType("int").UseMySqlIdentityColumn().IsRequired();
             modelBuilder.Entity<PartyIdentity>().Property(pi => pi.FirstName).HasColumnType("nvarchar(100)").IsRequired();
             modelBuilder.Entity<PartyIdentity>().Property(pi => pi.LastName).HasColumnType("nvarchar(100)").IsRequired();
-            modelBuilder.Entity<PartyIdentity>().Property(pi => pi.CreationDateTime).HasColumnType("datetime").IsRequired(false);
 
             modelBuilder.Entity<PartyContact>().Property(pc => pc.Id).HasColumnType("int").UseMySqlIdentityColumn().IsRequired();
             modelBuilder.Entity<PartyContact>().Property(pc => pc.Address).HasColumnType("nvarchar(100)").IsRequired();
             modelBuilder.Entity<PartyContact>().Property(pc => pc.PartyIdentityId).HasColumnType("int").IsRequired();
-            modelBuilder.Entity<PartyContact>().Property(pc => pc.CreationDateTime).HasColumnType("datetime").IsRequired();
 
             // Configure relationships  
             modelBuilder.Entity<PartyContact>().HasOne<PartyIdentity>().WithMany().
