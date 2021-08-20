@@ -32,8 +32,7 @@ namespace DemoApplication.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Address = table.Column<string>(type: "nvarchar(100)", nullable: false),
-                    PartyIdentityId = table.Column<int>(type: "int", nullable: false),
-                    PartyIdentityId1 = table.Column<int>(type: "int", nullable: true)
+                    PartyIdentityId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -43,12 +42,6 @@ namespace DemoApplication.Migrations
                         column: x => x.PartyIdentityId,
                         principalTable: "PartyIdentities",
                         principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_PartyContacts_PartyIdentities_PartyIdentityId1",
-                        column: x => x.PartyIdentityId1,
-                        principalTable: "PartyIdentities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -56,11 +49,6 @@ namespace DemoApplication.Migrations
                 name: "IX_PartyContacts_PartyIdentityId",
                 table: "PartyContacts",
                 column: "PartyIdentityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PartyContacts_PartyIdentityId1",
-                table: "PartyContacts",
-                column: "PartyIdentityId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
