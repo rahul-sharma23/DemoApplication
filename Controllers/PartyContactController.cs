@@ -22,6 +22,15 @@ namespace DemoApplication.Controllers
         {
             return (this.myDbContext.PartyContact.ToList());
         }
+        [HttpPost]
+        public ActionResult Post([FromBody] PartyContact request)
+        {
+            this.myDbContext.Add(request);
+            this.myDbContext.SaveChanges();
+
+
+            return Ok();
+        }
         public IActionResult Index()
         {
             return View();

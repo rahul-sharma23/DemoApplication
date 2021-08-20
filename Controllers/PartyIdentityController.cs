@@ -22,9 +22,19 @@ namespace DemoApplication.Controllers
         {
             return (this.myDbContext.PartyIdentity.ToList());
         }
+        [HttpPost]
+        public ActionResult Post([FromBody] PartyIdentity request)
+        {
+            this.myDbContext.Add(request);
+            this.myDbContext.SaveChanges();
+            
+
+            return Ok();
+        }
         public IActionResult Index()
         {
             return View();
         }
+
     }
 }
